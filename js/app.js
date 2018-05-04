@@ -10,6 +10,8 @@ loadAllEventListeners();
 
 // Load all event listeners function
 function loadAllEventListeners() {
+  //Load tasks from Local Storage
+  document.addEventListener('DOMContentLoaded', loadFromLocalStorage);
   // Add task to the tasks list
   taskForm.addEventListener('submit', addTask);
   // Remove task from the task list
@@ -19,6 +21,36 @@ function loadAllEventListeners() {
   // Filter tasks
   tasksFilter.addEventListener('keyup', filterTasks)
 
+};
+
+// Load tasks from Local Storage function
+function loadFromLocalStorage() {
+  let tasks;
+  if (localStorage.getItem('tasks') !== null) {
+    tasks = JSON.parse(localStorage.getItem('tasks'));
+
+    tasks.forEach(function(task) {
+        // Create li element
+      const li = document.createElement('li');
+      li.className = 'collection-item';
+
+      // Add text to li
+      li.appendChild(document.createTextNode(task));
+
+      // Create delete btn
+      const deleteBtn = document.createElement('a');
+      deleteBtn.className = 'btn__delete secondary-content';
+
+      //Add icon to delete btn
+      deleteBtn.innerHTML = '<i class="fa fa-remove"></i>';
+
+      //Append delete btn to li
+      li.appendChild(deleteBtn);
+
+      //Append li to tasks list
+      tasksList.appendChild(li);
+    });
+  };
 };
 
 // Add task to the tasks list function
