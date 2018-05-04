@@ -48,6 +48,9 @@ function addTask(e) {
     //Append li to tasks list
     tasksList.appendChild(li);
 
+    // Add task to Local Storage
+    addTaskToLocalStorage(taskField.value);
+
     // Clear task field
     taskField.value = '';
   }
