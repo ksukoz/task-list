@@ -36,8 +36,8 @@ function addTask(e) {
     li.appendChild(document.createTextNode(taskField.value));
 
     // Create delete btn
-    const deleteBtn = document.createElement('button');
-    deleteBtn.className = 'btn-flat btn__delete secondary-content';
+    const deleteBtn = document.createElement('a');
+    deleteBtn.className = 'btn__delete secondary-content';
 
     //Add icon to delete btn
     deleteBtn.innerHTML = '<i class="fa fa-remove"></i>';
@@ -71,5 +71,13 @@ function clearTasks() {
 
 // Filter tasks function
 function filterTasks(e) {
-  
+  const text = e.target.value.toLowerCase(),
+        tasks = document.querySelectorAll('.collection-item');
+  tasks.forEach(function(task) {
+    if (task.textContent.toLowerCase().indexOf(text) != -1) {
+      task.style.display = 'block';
+    } else {
+      task.style.display = 'none';
+    }
+  });
 };
