@@ -1,5 +1,6 @@
 // Define UI Vars
-const taskForm = document.querySelector('#task-form'),      taskField = document.querySelector('#task'),
+const taskForm = document.querySelector('#task-form'),
+      taskField = document.querySelector('#task'),
       tasksList = document.querySelector('.task-list__wrap'),
       tasksFilter = document.querySelector('#filter'),
       tasksClearBtn = document.querySelector('.btn__clear-tasks');
@@ -11,7 +12,8 @@ loadAllEventListeners();
 function loadAllEventListeners() {
   // Add task to the tasks list
   taskForm.addEventListener('submit', addTask);
-
+  // Remove task from the task list
+  tasksList.addEventListener('click', removeTask);
 
 };
 
@@ -47,4 +49,9 @@ function addTask(e) {
   }
 
   e.preventDefault();
+};
+
+// Remove task from tasks list function
+function removeTask(e) {
+  
 }
