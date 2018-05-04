@@ -14,6 +14,8 @@ function loadAllEventListeners() {
   taskForm.addEventListener('submit', addTask);
   // Remove task from the task list
   tasksList.addEventListener('click', removeTask);
+  // Clear tasks
+  tasksClearBtn.addEventListener('click', clearTasks);
 
 };
 
@@ -56,4 +58,9 @@ function removeTask(e) {
   if (e.target.parentNode.classList.contains('btn__delete')) {
     e.target.parentNode.parentNode.remove();
   }
-}
+};
+
+//Clear tasks function
+function clearTasks() {
+
+};
