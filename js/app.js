@@ -109,13 +109,32 @@ function removeTask(e) {
   if (e.target.parentNode.classList.contains('btn__delete')) {
     e.target.parentNode.parentNode.remove();
   }
+
+  // Remove from Local Storage
+  removeTaskFromLocalStorage(e.target.parentNode.parentNode);
 };
+
+// Remove from Local Storage function
+function removeTaskFromLocalStorage(item) {
+  let tasks;
+  if (localStorage.getItem('tasks') !== null) {
+    tasks = JSON.parse(localStorage.getItem('tasks'));
+    tasks.forEach(function(task, i) {
+      if (task === item.textContent) {
+        tasks.splice(i,1);
+      }
+    });
+
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+  }
+}
 
 // Clear tasks function
 function clearTasks() {
   while (tasksList.firstChild) {
     tasksList.firstChild.remove();
   }
+  localStorage.clear();
 };
 
 // Filter tasks function
