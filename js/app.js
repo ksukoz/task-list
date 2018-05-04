@@ -53,5 +53,7 @@ function addTask(e) {
 
 // Remove task from tasks list function
 function removeTask(e) {
-  
+  if (e.target.parentNode.classList.contains('btn__delete')) {
+    e.target.parentNode.parentNode.remove();
+  }
 }
