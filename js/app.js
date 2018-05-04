@@ -58,6 +58,20 @@ function addTask(e) {
   e.preventDefault();
 };
 
+// Add task to Local Storage function
+function addTaskToLocalStorage(task) {
+  let tasks;
+  if (localStorage.getItem('tasks') === null) {
+    tasks = [];
+  } 
+  else {
+    tasks = JSON.parse(localStorage.getItem('tasks'));
+  }
+
+  tasks.push(task);
+  localStorage.setItem('tasks', JSON.stringify(tasks));
+};
+
 // Remove task from tasks list function
 function removeTask(e) {
   if (e.target.parentNode.classList.contains('btn__delete')) {
