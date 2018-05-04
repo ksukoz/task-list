@@ -16,6 +16,8 @@ function loadAllEventListeners() {
   tasksList.addEventListener('click', removeTask);
   // Clear tasks
   tasksClearBtn.addEventListener('click', clearTasks);
+  // Filter tasks
+  tasksFilter.addEventListener('keyup', filterTasks)
 
 };
 
@@ -60,9 +62,14 @@ function removeTask(e) {
   }
 };
 
-//Clear tasks function
+// Clear tasks function
 function clearTasks() {
   while (tasksList.firstChild) {
     tasksList.firstChild.remove();
   }
+};
+
+// Filter tasks function
+function filterTasks(e) {
+  
 };
